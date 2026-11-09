@@ -95,6 +95,7 @@ public/fonts/           # SUITE woff2
 - 보조 텍스트: `cream` 70–88% 불투명도
 - 주요 버튼: `cream` 배경 + `night` 텍스트
 - 보조 버튼: 투명 배경 + `plum` 1.5px 테두리
+- 예외: 행운의 색 견본은 운세 내용이라 실제 색을 쓴다. `lib/luckyColors.ts` 대응표만 사용하고 UI 다른 곳에는 쓰지 않는다.
 
 ### 리퀴드 글래스 카드
 

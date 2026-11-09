@@ -88,7 +88,7 @@ description: One Minute Fortune의 문장풀(data/fortune.json)에 운세 문장
 `caution` 문장은 "나쁜 일이 생긴다"가 아니라 "이렇게 하면 괜찮다"로 끝나야 한다.
 
 **행운 요소**
-- `color`: 한글 색 이름만 (예: 실버, 라벤더). 화면에 칩으로 표시되므로 HEX가 필요하면 사용자에게 구조 변경 여부를 먼저 묻는다.
+- `color`: 한글 색 이름만 (예: 실버, 라벤더). `fortune.json`에는 HEX를 넣지 않는다. 결과 화면 견본용 HEX는 `lib/luckyColors.ts`에 **같은 이름으로 함께 추가**한다 (`lib/luckyColors.test.ts`가 빠진 색을 잡는다).
 - `item`: 일상에서 흔한 물건, 2–6자 (예: 손목시계, 머그컵). 브랜드명 금지.
 - `direction`: 동·서·남·북·남동·남서·북동·북서 중에서만. 이미 다 있으면 추가하지 않는다.
 - `number`: 범위 배열이므로 건드리지 않는다.
