@@ -1,12 +1,16 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ImageSaveDialog } from "@/components/share/ImageSaveDialog";
 import type { Ymd } from "@/lib/fortune/types";
+import { detectInAppBrowser, type InAppBrowser } from "@/lib/inApp";
 import { ogResultPath, senderLabel, sharePath } from "@/lib/share";
 
 /*
  * 결과 화면 공유 버튼 — 공유하기(Web Share API, 미지원 시 링크 복사) · 이미지 저장 · 링크 복사
  * 이미지 저장은 OG 결과 이미지(1200×630)를 그대로 내려받는다.
+ * 카카오톡·인스타그램 등 인앱 브라우저는 blob 내려받기를 지원하지 않아,
+ * 이미지를 띄우고 길게 눌러 저장하도록 안내한다.
  */
 
 const primary =
@@ -47,6 +51,10 @@ export function ShareActions({
 }) {
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
+  const [preview, setPreview] = useState<{
+    url: string;
+    inApp: InAppBrowser;
+  } | null>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => () => clearTimeout(timer.current), []);
@@ -86,6 +94,14 @@ export function ShareActions({
   }
 
   async function saveImage() {
+    const inApp = detectInAppBrowser(navigator.userAgent);
+    if (inApp) {
+      setPreview({
+        url: new URL(ogResultPath(birth, date, name), location.origin).href,
+        inApp,
+      });
+      return;
+    }
     setSaving(true);
     try {
       const res = await fetch(ogResultPath(birth, date, name));
@@ -138,6 +154,13 @@ export function ShareActions({
           </button>
         </div>
       </div>
+      {preview && (
+        <ImageSaveDialog
+          imageUrl={preview.url}
+          kakao={preview.inApp === "kakaotalk"}
+          onClose={() => setPreview(null)}
+        />
+      )}
       <p
         role="status"
         className="min-h-5 text-center text-[13px] text-cream/80"
