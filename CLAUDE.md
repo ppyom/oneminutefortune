@@ -10,7 +10,8 @@
 - 저장: localStorage만 사용 (DB, 로그인 없음)
 - 공유 이미지: `next/og` (ImageResponse)
 - 카드 PNG 저장: html-to-image
-- 공유: Kakao JS SDK
+- 공유: Web Share API(`navigator.share`), 미지원 브라우저는 링크 복사(`navigator.clipboard`)로 대체
+- 분석: GA4 (`@next/third-parties`, `NEXT_PUBLIC_GA_ID` 있을 때만)
 - 테스트: Vitest
 
 ## 명령어
@@ -32,6 +33,10 @@ app/
   result/page.tsx       # 결과 화면 (/result)
   s/[id]/page.tsx       # 공유 랜딩 (/s/[생년월일-날짜])
   api/og/route.tsx      # OG 이미지 (공통 + 결과 포함)
+  about/page.tsx        # 서비스 소개
+  privacy/page.tsx      # 개인정보처리방침
+  sitemap.ts, robots.ts, manifest.ts
+lib/site.ts             # 사이트 URL·이름 상수 (env: .env.example 참고)
 lib/fortune/
   seed.ts               # 해시(cyrb53), PRNG(mulberry32)
   getFortune.ts         # 핵심 순수 함수
@@ -137,6 +142,7 @@ box-shadow: inset 0 1px 0 rgba(238, 227, 176, 0.28), 0 12px 40px rgba(20, 0, 34,
 - 운세 생성에 LLM 호출 (MVP는 문장풀만)
 - 이모지 아이콘 사용. 아이콘은 인라인 SVG 사용
 - 그라데이션 워시 배경
+- Kakao JS SDK 등 외부 공유 SDK 추가. 공유는 Web Share API + 링크 복사만 쓴다
 
 ## 이후 로드맵 (지금 구현 X)
 
