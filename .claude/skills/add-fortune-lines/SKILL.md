@@ -7,14 +7,24 @@ description: One Minute Fortune의 문장풀(data/fortune.json)에 운세 문장
 
 `data/fortune.json`에 문장을 추가한다. 이 파일은 `getFortune`이 시드로 **배열 인덱스**를 뽑아 쓰기 때문에, 순서가 바뀌면 이미 공유된 링크의 결과가 달라진다. 아래 규칙은 그걸 막기 위한 것이다.
 
+## 선택 방식 (날짜별 풀 버전)
+
+`getFortune`은 `floor(rng() * counts[칸])`으로 문장을 고른다. `counts`는 `data/pool-versions.json`에서 **그 날짜에 유효한 버전**의 값이다.
+
+- 문장을 배열 끝에 추가만 하면 → 아직 아무 결과에도 쓰이지 않는다 (안전).
+- `npm run freeze-pool -- --from YYYYMMDD`로 새 버전을 기록하면 → 그 날짜부터 새 문장이 후보에 들어간다. 그 이전 날짜의 결과는 그대로다.
+- `from`은 **내일(KST) 이후**만 가능하다 (스크립트가 막는다). 그리고 **`from` 날짜 전에 배포**해야 한다. 배포가 늦으면 `from`부터 배포일까지의 결과가 바뀐다.
+
 ## 절대 규칙
 
 1. **배열 끝에만 추가한다.** 중간 삽입, 정렬, 순서 변경 금지.
 2. **기존 문장 삭제·수정 금지.** 오탈자 수정만 예외이며, 그때도 의미가 바뀌면 안 된다.
 3. **구조(키 이름, 등급 키, 중첩)를 바꾸지 않는다.**
 4. 추가 전후로 반드시 검증 스크립트와 테스트를 돌린다.
+5. **`data/pool-versions.json`은 직접 편집하지 않는다.** 항상 freeze 스크립트로만 추가한다. 기존 항목 수정·삭제 금지.
+6. `lucky.number` 범위(`[1, 99]`)는 버전 관리 대상이 아니므로 절대 바꾸지 않는다.
 
-> 문장 수를 늘리면 `getFortune`이 `index % length` 방식일 경우 결과가 바뀔 수 있다. 작업 전에 `lib/fortune/getFortune.ts`의 선택 방식을 확인하고, 기존 결과가 바뀌는 구조라면 작업을 멈추고 사용자에게 알린다.
+> 작업 전에 `lib/fortune/getFortune.ts`가 여전히 pool-versions의 `counts`로 고르는지 확인한다. `index % length`나 `arr.length`를 직접 쓰는 구조로 바뀌어 있다면 작업을 멈추고 사용자에게 알린다.
 
 ## 절차
 
@@ -25,7 +35,12 @@ description: One Minute Fortune의 문장풀(data/fortune.json)에 운세 문장
 5. **검증**:
   - `node .claude/skills/add-fortune-lines/scripts/check-pool.mjs` — 중복·형식 오류 0건이어야 한다
   - `npm run test` — `getFortune` 스냅샷이 깨지면 안 된다. 깨지면 추가한 내용을 되돌리고 원인을 보고한다
-6. **보고**: 칸별 추가 개수와 최종 문장 수를 표로 요약한다.
+6. **버전 고정 (freeze)**: 사용자에게 적용 시작일을 확인한다. 정해 주지 않으면 내일(KST)로 제안한다.
+  - `npm run freeze-pool -- --from YYYYMMDD --dry-run`으로 변경된 칸을 먼저 확인한다
+  - 이상이 없으면 `--dry-run`을 빼고 실행한다
+  - `npm run test`를 다시 돌린다. 스냅샷은 과거 날짜라 깨지면 안 된다
+  - freeze를 안 하면 추가한 문장은 화면에 나오지 않는다. 사용자가 미루기로 했다면 보고에 그렇게 적는다
+7. **보고**: 칸별 추가 개수와 최종 문장 수를 표로 요약한다. freeze 했다면 `from` 날짜와 "그 날짜 전에 배포해야 한다"는 점을 함께 알린다.
 
 ## 파일 구조
 

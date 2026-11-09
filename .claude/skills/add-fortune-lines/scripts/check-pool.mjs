@@ -47,10 +47,46 @@ for (const k of ["color", "item", "direction"]) {
   else rows.push({ label: `lucky.${k}`, count: arr.length, low: false });
 }
 
+const num = pool.lucky?.number;
+if (!Array.isArray(num) || num.length !== 2 || num[0] !== 1 || num[1] !== 99)
+  errors.push(`lucky.number: [1, 99]여야 함 (현재 ${JSON.stringify(num)}) — 바꾸면 기존 결과가 달라짐`);
+
+// pool-versions.json 대비 고정(freeze) 현황
+const versionsPath = path.replace(/fortune\.json$/, "pool-versions.json");
+let frozen = null;
+try {
+  frozen = JSON.parse(readFileSync(versionsPath, "utf8")).at(-1) ?? null;
+} catch {
+  // 버전 파일이 없으면 고정 현황은 생략
+}
+for (const r of rows) {
+  r.frozen = frozen?.counts?.[r.label];
+  if (r.frozen != null && r.count < r.frozen)
+    errors.push(`${r.label}: 고정된 ${r.frozen}개보다 적음 (${r.count}개) — 문장이 삭제됨`);
+}
+
 const width = Math.max(...rows.map((r) => r.label.length));
-console.log("칸".padEnd(width), "문장 수");
-for (const r of rows) console.log(r.label.padEnd(width), String(r.count).padStart(4), r.low ? `  ← ${MIN}개 미만` : "");
+console.log("칸".padEnd(width), "문장 수", frozen ? " 고정" : "");
+for (const r of rows) {
+  const notes = [];
+  if (r.low) notes.push(`${MIN}개 미만`);
+  if (frozen && r.frozen !== r.count) notes.push("freeze 안 됨");
+  console.log(
+    r.label.padEnd(width),
+    String(r.count).padStart(4),
+    frozen ? String(r.frozen ?? "-").padStart(7) : "",
+    notes.length ? `  ← ${notes.join(", ")}` : "",
+  );
+}
 console.log(`\n총 ${rows.reduce((a, r) => a + r.count, 0)}개 · ${MIN}개 미만 칸 ${rows.filter((r) => r.low).length}개`);
+if (frozen) {
+  const pending = rows.filter((r) => r.frozen !== r.count).length;
+  console.log(
+    pending
+      ? `마지막 버전(from ${frozen.from}) 이후 freeze 안 된 칸 ${pending}개 — 추가한 문장은 freeze 전까지 화면에 안 나와요`
+      : `모든 칸이 마지막 버전(from ${frozen.from})에 고정돼 있어요`,
+  );
+}
 
 if (errors.length) {
   console.error(`\n✗ 오류 ${errors.length}건`);

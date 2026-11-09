@@ -20,6 +20,8 @@ npm run dev       # 개발 서버
 npm run build     # 프로덕션 빌드
 npm run lint      # ESLint
 npm run test      # Vitest
+npm run format    # Prettier (+ tailwind 클래스 정렬)
+npm run freeze-pool -- --from YYYYMMDD   # 문장풀 버전 고정 (add-fortune-lines 스킬 참고)
 ```
 
 ## 폴더 구조
@@ -37,6 +39,9 @@ lib/fortune/
   types.ts
 data/
   fortune.json          # 문장풀
+  pool-versions.json    # 날짜별 칸당 사용 문장 수 (freeze-pool로만 추가)
+scripts/
+  freeze-pool.mjs       # pool-versions에 새 버전 기록
 components/
 public/fonts/           # SUITE woff2
 ```
@@ -67,6 +72,9 @@ public/fonts/           # SUITE woff2
 - 구조: `{ total: { [grade]: { summary[], detail[] } }, love|money|work|health: { [grade]: string[] }, lucky: { color[], number, direction[], item[] } }`
 - 칸당 최소 20문장을 유지한다.
 - 문장 순서를 바꾸거나 중간에서 삭제하지 말 것. 인덱스가 바뀌면 기존 결과가 달라진다. 추가는 배열 끝에만 한다.
+- 선택은 `floor(rng() * counts[칸])`. `counts`는 `data/pool-versions.json`에서 그 날짜에 유효한 버전의 값이다. `arr.length`나 `% length`로 고르지 말 것.
+- 추가한 문장은 `freeze-pool`로 새 버전(`from` = 내일 이후)을 기록해야 쓰인다. `from` 이전 날짜의 결과는 바뀌지 않는다. `from` 날짜 전에 배포한다.
+- `lucky.number` 범위 `[1, 99]`는 바꾸지 않는다.
 
 ## 디자인 시스템
 

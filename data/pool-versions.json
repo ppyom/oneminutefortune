@@ -1,0 +1,34 @@
+[
+  {
+    "from": "20261109",
+    "counts": {
+      "total.best.summary": 3,
+      "total.best.detail": 3,
+      "total.good.summary": 3,
+      "total.good.detail": 3,
+      "total.normal.summary": 3,
+      "total.normal.detail": 3,
+      "total.caution.summary": 3,
+      "total.caution.detail": 3,
+      "love.best": 3,
+      "love.good": 3,
+      "love.normal": 3,
+      "love.caution": 3,
+      "money.best": 3,
+      "money.good": 3,
+      "money.normal": 3,
+      "money.caution": 3,
+      "work.best": 3,
+      "work.good": 3,
+      "work.normal": 3,
+      "work.caution": 3,
+      "health.best": 3,
+      "health.good": 3,
+      "health.normal": 3,
+      "health.caution": 3,
+      "lucky.color": 3,
+      "lucky.direction": 3,
+      "lucky.item": 3
+    }
+  }
+]

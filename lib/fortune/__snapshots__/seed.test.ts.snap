@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`mulberry32 > 수열 고정 (바뀌면 모든 운세 결과가 바뀜) 1`] = `
+[
+  0.6270739405881613,
+  0.002735721180215478,
+  0.5274470399599522,
+]
+`;
