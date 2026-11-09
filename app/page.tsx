@@ -1,69 +1,53 @@
-import Image from "next/image";
+import { BirthForm } from "@/components/BirthForm";
+import { MainBackdrop } from "@/components/MainBackdrop";
+import { SiteFooter } from "@/components/SiteFooter";
+import { TodayLabel } from "@/components/TodayLabel";
+import { SITE_NAME } from "@/lib/site";
 
+/*
+ * 입력 화면 — design/Main(390) · TabletMain(834) · DesktopMain(1440)
+ *  모바일: 카피 위, 입력 카드는 화면 아래
+ *  태블릿: 초승달 아래로 카피·카드를 가운데 정렬
+ *  데스크톱: 왼쪽 카피 / 오른쪽 글래스 카드 2단
+ */
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
-        <Image
-          className="h-5 w-[100px] dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl leading-10 font-semibold tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="relative isolate flex min-h-dvh flex-col overflow-hidden px-6 pt-6 pb-4 tablet:items-center tablet:px-12 tablet:pt-8 tablet:pb-6 desktop:items-stretch desktop:px-30 desktop:pb-12">
+      <MainBackdrop />
+
+      <header className="flex h-11 w-full items-center justify-between tablet:h-12 desktop:mx-auto desktop:h-14 desktop:max-w-300">
+        <span className="font-display text-xl tracking-[-0.02em] tablet:text-2xl tablet:tracking-normal desktop:text-[26px]">
+          {SITE_NAME}
+        </span>
+        <TodayLabel className="text-[13px] text-cream/75 tablet:text-[15px] tablet:text-cream/80 desktop:text-base" />
+      </header>
+
+      <main className="flex flex-1 flex-col tablet:items-center desktop:mx-auto desktop:w-full desktop:max-w-300 desktop:flex-row desktop:gap-24">
+        <section className="mt-16 flex flex-col gap-3.5 tablet:mt-75 tablet:items-center tablet:gap-4 tablet:text-center desktop:mt-0 desktop:min-w-0 desktop:flex-1 desktop:items-start desktop:gap-5.5 desktop:text-left">
+          <p className="text-sm font-medium tracking-[0.08em] text-cream/80 tablet:text-[15px] tablet:tracking-[0.1em] tablet:text-cream/85 desktop:text-base desktop:tracking-[0.12em]">
+            TODAY’S FORTUNE
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-12 w-full items-center justify-center gap-2 rounded-full px-5 transition-colors hover:bg-[#383838] md:w-[158px] dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="h-[14px] w-4 dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <h1 className="font-display text-[34px] leading-[1.32] tracking-[-0.03em] break-keep tablet:text-5xl tablet:leading-[1.3] desktop:text-[clamp(48px,4.45vw,64px)] desktop:leading-[1.25]">
+            오늘, 당신의 별은
+            <br />
+            어디쯤 떠 있을까요
+          </h1>
+          <p className="text-[15px] leading-[1.6] text-cream/80 tablet:text-lg tablet:text-cream/82 desktop:text-xl desktop:leading-[1.65]">
+            생년월일만 알려주면
+            <br className="tablet:hidden desktop:inline" /> 매일 자정, 새로운
+            운세가 도착해요.
+          </p>
+        </section>
+
+        {/* 모바일: 카드를 화면 아래로 민다 */}
+        <div aria-hidden className="min-h-6 flex-1 tablet:hidden" />
+
+        <div className="w-full tablet:mt-14 tablet:w-130 desktop:mt-0 desktop:w-115 desktop:shrink-0">
+          <BirthForm />
         </div>
       </main>
+
+      <SiteFooter className="mt-1 w-full tablet:mt-4 desktop:absolute desktop:inset-x-0 desktop:bottom-1 desktop:mt-0" />
     </div>
   );
 }

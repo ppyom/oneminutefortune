@@ -9,6 +9,10 @@
 
   --font-sans: var(--font-suite), system-ui, sans-serif;
   --font-display: var(--font-gowun), var(--font-suite), sans-serif;
+
+  /* 브레이크포인트: 모바일 ~767 / 태블릿 768–1199 / 데스크톱 1200+ */
+  --breakpoint-tablet: 48rem;
+  --breakpoint-desktop: 75rem;
 }
 
 /* 리퀴드 글래스 카드
