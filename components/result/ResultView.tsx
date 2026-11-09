@@ -8,6 +8,7 @@ import {
   LuckyGrid,
   TotalCard,
 } from "@/components/result/ResultSections";
+import { ShareActions } from "@/components/share/ShareActions";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useTodayKst } from "@/components/TodayLabel";
 import { formatKoreanDate } from "@/lib/birth";
@@ -60,6 +61,7 @@ export function ResultView() {
 
       {fortune && profile ? (
         <>
+          {/* (공유 버튼은 화면 크기별로 자리가 달라 세 번 그리고 하나만 보인다) */}
           <div className="flex flex-col gap-1.5 px-1 tablet:gap-2 tablet:px-0">
             <p className="text-[13px] text-cream/75 tablet:text-[15px] tablet:text-cream/80 desktop:text-base">
               {formatKoreanDate(fortune.date, true)}
@@ -74,11 +76,35 @@ export function ResultView() {
           <div className="flex flex-col gap-7 tablet:gap-8 desktop:flex-row desktop:items-start">
             <div className="flex flex-col gap-4 desktop:w-110 desktop:shrink-0">
               <TotalCard total={fortune.total} />
-              {/* 공유 버튼 자리 (공유 단계에서 추가) */}
+              <div className="hidden desktop:block">
+                <ShareActions
+                  birth={fortune.birth}
+                  date={fortune.date}
+                  name={profile.name}
+                  layout="stack"
+                />
+              </div>
             </div>
             <div className="flex min-w-0 flex-1 flex-col gap-7 tablet:gap-8 desktop:gap-9">
               <FieldGrid fields={fortune.fields} />
               <LuckyGrid lucky={fortune.lucky} />
+              {/* 모바일: 주요 버튼 + 보조 2개 / 태블릿: 2:1:1 한 줄 */}
+              <div className="tablet:hidden">
+                <ShareActions
+                  birth={fortune.birth}
+                  date={fortune.date}
+                  name={profile.name}
+                  layout="stack"
+                />
+              </div>
+              <div className="hidden tablet:block desktop:hidden">
+                <ShareActions
+                  birth={fortune.birth}
+                  date={fortune.date}
+                  name={profile.name}
+                  layout="row"
+                />
+              </div>
             </div>
           </div>
 

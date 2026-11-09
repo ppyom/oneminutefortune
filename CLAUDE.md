@@ -9,7 +9,7 @@
 - 배포: Vercel
 - 저장: localStorage만 사용 (DB, 로그인 없음)
 - 공유 이미지: `next/og` (ImageResponse)
-- 카드 PNG 저장: html-to-image
+- 이미지 저장: OG 결과 이미지(`/api/og?id=…`)를 내려받는다 (html-to-image는 backdrop-filter를 못 그려 쓰지 않음)
 - 공유: Web Share API(`navigator.share`), 미지원 브라우저는 링크 복사(`navigator.clipboard`)로 대체
 - 분석: GA4 (`@next/third-parties`, `NEXT_PUBLIC_GA_ID` 있을 때만)
 - 테스트: Vitest
@@ -127,8 +127,9 @@ box-shadow: inset 0 1px 0 rgba(238, 227, 176, 0.28), 0 12px 40px rgba(20, 0, 34,
 ## OG 이미지
 
 - A. 공통: 날짜 없음, 메인 링크용
-- B. 결과 포함: `/s/[생년월일-날짜]` 공유 링크용. URL에 날짜가 꼭 있어야 카톡 캐시를 피할 수 있다.
-- Satori는 `backdrop-filter` 미지원. 글래스는 미리 블러 처리한 배경 PNG로 흉내 낸다.
+- B. 결과 포함: `/s/[생년월일-날짜]?n=이름`(이름은 입력한 경우만) 공유 링크용. 미래 날짜는 404. URL에 날짜가 꼭 있어야 카톡 캐시를 피할 수 있다.
+- Satori는 `backdrop-filter` 미지원. 글래스는 미리 블러 처리한 배경 PNG로 흉내 낸다 (`scripts/gen-og-backgrounds.mjs` → `assets/og/`, 폰트는 `assets/fonts/` 정적 TTF).
+- `/s/`와 `/api/og`는 robots.txt로 막지 않는다 (미리보기 봇이 읽어야 함). 색인은 noindex로 막는다. 카카오 등 봇 목록은 `next.config.ts`의 `htmlLimitedBots`.
 - 1200×630.
 
 ## 카피 톤
