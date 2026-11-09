@@ -14,11 +14,12 @@ export default function PrivacyPage() {
   return (
     <InfoPage
       title="개인정보처리방침"
-      lead={`${SITE_NAME}은 회원가입이 없고, 입력한 생년월일을 서버에 저장하지 않아요.`}
+      lead={`${SITE_NAME}은 회원가입이 없고, 입력한 생년월일과 이름을 서버에 저장하지 않아요.`}
     >
       <Section title="1. 수집하는 정보와 저장 위치">
         <p>
-          운세를 보려면 생년월일을 입력해요. 이 값은{" "}
+          운세를 보려면 생년월일을 입력해요. 결과 카드에 보여 줄 이름은 원할
+          때만 입력해요. 이 값들은{" "}
           <strong className="font-semibold text-cream">
             내 기기의 브라우저(localStorage)에만
           </strong>{" "}
@@ -26,7 +27,7 @@ export default function PrivacyPage() {
           데이터베이스에는 보관하지 않아요.
         </p>
         <p>
-          브라우저 설정에서 사이트 데이터를 지우면 저장된 생년월일도 함께
+          브라우저 설정에서 사이트 데이터를 지우면 저장된 생년월일과 이름도 함께
           지워져요.
         </p>
       </Section>
@@ -84,7 +85,9 @@ export default function PrivacyPage() {
 
       <Section title="6. 보관 기간">
         <ul className="list-disc space-y-1 pl-5">
-          <li>localStorage의 생년월일: 직접 지울 때까지 내 기기에만 남아요.</li>
+          <li>
+            localStorage의 생년월일·이름: 직접 지울 때까지 내 기기에만 남아요.
+          </li>
           <li>
             Google Analytics 통계: Google Analytics 설정에 따른 기간(최대
             14개월) 동안 보관돼요.
