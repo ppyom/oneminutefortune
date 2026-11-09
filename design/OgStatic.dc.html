@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>OG 이미지 — 공통</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;display=swap">
+<style>
+@font-face{font-family:'SUITE';font-weight:400;font-display:swap;src:url(../public/fonts/SUITE-Regular.woff2) format('woff2')}
+@font-face{font-family:'SUITE';font-weight:500;font-display:swap;src:url(../public/fonts/SUITE-Medium.woff2) format('woff2')}
+@font-face{font-family:'SUITE';font-weight:600;font-display:swap;src:url(../public/fonts/SUITE-SemiBold.woff2) format('woff2')}
+body{margin:0}
+a{color:#EEE3B0}a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="width: 1200px; height: 630px; box-sizing: border-box; background: #290044; color: #EEE3B0; font-family: 'SUITE', system-ui, sans-serif; position: relative; overflow: hidden; isolation: isolate; padding: 80px 88px; display: flex; flex-direction: column; justify-content: center; gap: 28px">
+  <svg aria-hidden="true" width="1200" height="630" viewBox="0 0 1200 630" style="position: absolute; left: 0; top: 0; z-index: -1">
+    <circle cx="120" cy="70" r="2" fill="#EEE3B0" opacity="0.7"></circle>
+    <circle cx="420" cy="40" r="1.5" fill="#EEE3B0" opacity="0.6"></circle>
+    <circle cx="640" cy="110" r="2" fill="#EEE3B0" opacity="0.7"></circle>
+    <circle cx="560" cy="560" r="1.5" fill="#EEE3B0" opacity="0.6"></circle>
+    <circle cx="760" cy="520" r="2" fill="#EEE3B0" opacity="0.7"></circle>
+    <circle cx="1140" cy="80" r="1.5" fill="#EEE3B0" opacity="0.7"></circle>
+    <defs>
+      <radialGradient id="plumSpread" cx="950" cy="320" r="400" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#8A2A78" stop-opacity="1"></stop>
+        <stop offset="0.4" stop-color="#8A2A78" stop-opacity="0.75"></stop>
+        <stop offset="0.75" stop-color="#8A2A78" stop-opacity="0.25"></stop>
+        <stop offset="1" stop-color="#8A2A78" stop-opacity="0"></stop>
+      </radialGradient>
+    </defs>
+    <circle cx="950" cy="320" r="400" fill="url(#plumSpread)"></circle>
+    <circle cx="950" cy="320" r="170" fill="#500071"></circle>
+    <circle cx="950" cy="320" r="118" fill="#EEE3B0"></circle>
+    <circle cx="998" cy="290" r="108" fill="#500071"></circle>
+    <circle cx="80" cy="640" r="140" fill="#8A2A78" opacity="0.6"></circle>
+  </svg>
+
+  <p style="margin: 0; font-size: 24px; font-weight: 500; letter-spacing: 0.12em; opacity: 0.85">ONE MINUTE FORTUNE</p>
+  <h1 style="margin: 0; font-family: 'Gowun Dodum', 'SUITE', sans-serif; font-size: 104px; line-height: 1.1; font-weight: 400; letter-spacing: -0.03em">오늘의 운세</h1>
+  <p style="margin: 0; font-size: 30px; line-height: 1.5; color: rgba(238,227,176,0.88)">생년월일만 넣으면<br>매일 자정, 새로운 운세가 도착해요</p>
+  <div style="display: flex; align-items: center; gap: 16px; margin-top: 12px">
+    <span style="height: 64px; padding: 0 32px; border-radius: 999px; background: #EEE3B0; color: #290044; display: flex; align-items: center; font-size: 26px; font-weight: 600">무료로 확인하기</span>
+    <span style="height: 64px; padding: 0 28px; border-radius: 999px; background: rgba(80,0,113,0.35); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(238,227,176,0.22); display: flex; align-items: center; font-size: 22px">[YOUR DOMAIN]</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":630}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

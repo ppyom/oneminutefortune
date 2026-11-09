@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>오늘의 운세 — 데스크톱 입력</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&amp;display=swap">
+<style>
+@font-face{font-family:'SUITE';font-weight:400;font-display:swap;src:url(../public/fonts/SUITE-Regular.woff2) format('woff2')}
+@font-face{font-family:'SUITE';font-weight:500;font-display:swap;src:url(../public/fonts/SUITE-Medium.woff2) format('woff2')}
+@font-face{font-family:'SUITE';font-weight:600;font-display:swap;src:url(../public/fonts/SUITE-SemiBold.woff2) format('woff2')}
+body{margin:0}
+a{color:#EEE3B0}a:hover{color:#FFFFFF}
+input::placeholder{color:rgba(238,227,176,0.45)}
+</style>
+</helmet>
+<div style="width: 1440px; height: 900px; box-sizing: border-box; background: #290044; color: #EEE3B0; font-family: 'SUITE', system-ui, sans-serif; position: relative; overflow: hidden; isolation: isolate; padding: 32px 120px 48px; display: flex; flex-direction: column">
+  <svg aria-hidden="true" width="1440" height="900" viewBox="0 0 1440 900" style="position: absolute; left: 0; top: 0; z-index: -1">
+    <circle cx="160" cy="140" r="1.5" fill="#EEE3B0" opacity="0.7"></circle>
+    <circle cx="420" cy="90" r="1" fill="#EEE3B0" opacity="0.5"></circle>
+    <circle cx="700" cy="160" r="1.5" fill="#EEE3B0" opacity="0.7"></circle>
+    <circle cx="560" cy="780" r="1" fill="#EEE3B0" opacity="0.6"></circle>
+    <circle cx="1380" cy="120" r="1.5" fill="#EEE3B0" opacity="0.7"></circle>
+    <circle cx="1240" cy="220" r="110" fill="#500071"></circle>
+    <circle cx="1240" cy="220" r="74" fill="#EEE3B0"></circle>
+    <circle cx="1270" cy="200" r="68" fill="#500071"></circle>
+    <circle cx="960" cy="700" r="230" fill="#8A2A78"></circle>
+    <circle cx="1400" cy="860" r="160" fill="#8A2A78" opacity="0.7"></circle>
+    <circle cx="80" cy="900" r="160" fill="#8A2A78" opacity="0.45"></circle>
+  </svg>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; height: 56px">
+    <span style="font-family: 'Gowun Dodum', 'SUITE', sans-serif; font-size: 26px; font-weight: 400">One Minute Fortune</span>
+    <span style="font-size: 16px; color: rgba(238,227,176,0.8)">2026년 11월 9일 월요일</span>
+  </div>
+
+  <div style="flex: 1 1 auto; display: flex; align-items: center; gap: 96px">
+    <div style="flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+      <p style="margin: 0; font-size: 16px; font-weight: 500; opacity: 0.85; letter-spacing: 0.12em">TODAY’S FORTUNE</p>
+      <h1 style="margin: 0; font-family: 'Gowun Dodum', 'SUITE', sans-serif; font-size: 64px; line-height: 1.25; font-weight: 400; letter-spacing: -0.03em">오늘, 당신의 별은<br>어디쯤 떠 있을까요</h1>
+      <p style="margin: 0; font-size: 20px; line-height: 1.65; color: rgba(238,227,176,0.82)">생년월일만 알려주면<br>매일 자정, 새로운 운세가 도착해요.</p>
+    </div>
+
+    <div style="width: 460px; flex: 0 0 auto; box-sizing: border-box; background: rgba(80,0,113,0.32); backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); border: 1px solid rgba(238,227,176,0.2); box-shadow: inset 0 1px 0 rgba(238,227,176,0.28), 0 12px 40px rgba(20,0,34,0.45); border-radius: 32px; padding: 36px; display: flex; flex-direction: column; gap: 20px">
+      <p style="margin: 0; font-family: 'Gowun Dodum', 'SUITE', sans-serif; font-size: 24px; font-weight: 400">내 운세 확인하기</p>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <label for="d-birth" style="font-size: 14px; font-weight: 600">생년월일</label>
+        <input id="d-birth" type="text" inputmode="numeric" placeholder="1995. 03. 14" style="height: 56px; box-sizing: border-box; border-radius: 16px; border: 1px solid rgba(238,227,176,0.22); background: rgba(41,0,68,0.45); color: #EEE3B0; padding: 0 18px; font-family: inherit; font-size: 17px; outline: none">
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <label for="d-name" style="font-size: 14px; font-weight: 600">이름 <span style="font-weight: 400; color: rgba(238,227,176,0.7)">(선택)</span></label>
+        <input id="d-name" type="text" placeholder="결과 카드에 보여질 이름" style="height: 56px; box-sizing: border-box; border-radius: 16px; border: 1px solid rgba(238,227,176,0.22); background: rgba(41,0,68,0.45); color: #EEE3B0; padding: 0 18px; font-family: inherit; font-size: 17px; outline: none">
+      </div>
+      <a href="DesktopResult.dc.html" style="height: 58px; border-radius: 18px; background: #EEE3B0; color: #290044; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 600; text-decoration: none; margin-top: 4px">오늘 운세 보기</a>
+      <p style="margin: 0; text-align: center; font-size: 13px; color: rgba(238,227,176,0.72)">입력한 정보는 이 기기에만 저장돼요</p>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
