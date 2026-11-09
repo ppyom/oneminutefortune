@@ -38,7 +38,8 @@ description: One Minute Fortune의 문장풀(data/fortune.json)에 운세 문장
 6. **버전 고정 (freeze)**: 사용자에게 적용 시작일을 확인한다. 정해 주지 않으면 내일(KST)로 제안한다.
   - `npm run freeze-pool -- --from YYYYMMDD --dry-run`으로 변경된 칸을 먼저 확인한다
   - 이상이 없으면 `--dry-run`을 빼고 실행한다
-  - `npm run test`를 다시 돌린다. 스냅샷은 과거 날짜라 깨지면 안 된다
+  - `npm run test`를 다시 돌린다. 스냅샷은 기존 버전의 `from` 날짜만 쓰므로 깨지면 안 된다. 깨지면 freeze 결과를 되돌리고 원인을 보고한다
+  - `getFortune.test.ts` 스냅샷 목록에 새 `from` 날짜 케이스를 1–2개 추가하고 `npx vitest run -u`로 **새 케이스만** 기록됐는지 확인한다 (기존 스냅샷이 updated로 나오면 안 된다)
   - freeze를 안 하면 추가한 문장은 화면에 나오지 않는다. 사용자가 미루기로 했다면 보고에 그렇게 적는다
 7. **보고**: 칸별 추가 개수와 최종 문장 수를 표로 요약한다. freeze 했다면 `from` 날짜와 "그 날짜 전에 배포해야 한다"는 점을 함께 알린다.
 

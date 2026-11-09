@@ -1,91 +1,91 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`스냅샷 — 이미 공유된 결과가 바뀌면 안 됨 > 19681225 / 20261110 1`] = `
+exports[`스냅샷 — 이미 공유된 결과가 바뀌면 안 됨 > 19681225 / 20261109 1`] = `
 {
   "birth": "19681225",
-  "date": "20261110",
+  "date": "20261109",
   "fields": {
     "health": {
-      "grade": "good",
-      "score": 66,
-      "stars": 4,
-      "text": "규칙적인 식사가 컨디션을 지켜 줘요.",
+      "grade": "normal",
+      "score": 43,
+      "stars": 3,
+      "text": "따뜻한 차 한 잔이 여유를 줘요.",
     },
     "love": {
+      "grade": "good",
+      "score": 72,
+      "stars": 4,
+      "text": "작은 배려가 상대의 마음을 움직여요.",
+    },
+    "money": {
+      "grade": "best",
+      "score": 94,
+      "stars": 5,
+      "text": "꼼꼼히 비교하면 알뜰한 선택을 해요.",
+    },
+    "work": {
       "grade": "normal",
       "score": 60,
       "stars": 3,
-      "text": "서두르지 않으면 관계가 안정돼요.",
-    },
-    "money": {
-      "grade": "caution",
-      "score": 25,
-      "stars": 2,
-      "text": "꼭 필요한 지출부터 챙기면 마음이 편해요.",
-    },
-    "work": {
-      "grade": "good",
-      "score": 81,
-      "stars": 4,
-      "text": "차근차근 하면 결과가 깔끔하게 나와요.",
+      "text": "무리하지 않으면 무난하게 흘러가요.",
     },
   },
   "lucky": {
-    "color": "라벤더",
+    "color": "실버",
     "direction": "남서",
     "item": "손수건",
-    "number": 29,
+    "number": 38,
   },
   "total": {
     "detail": "가까운 사람과 대화가 잘 통하는 날이에요. 고마운 마음을 짧게라도 표현해 보세요. 관계가 한층 따뜻해져요.",
     "grade": "good",
-    "score": 82,
-    "summary": "차분히 쌓아 가면 빛나는 날",
+    "score": 72,
+    "summary": "솔직한 마음이 통하는 하루",
   },
 }
 `;
 
-exports[`스냅샷 — 이미 공유된 결과가 바뀌면 안 됨 > 19801010 / 20270101 1`] = `
+exports[`스냅샷 — 이미 공유된 결과가 바뀌면 안 됨 > 19801010 / 20261110 1`] = `
 {
   "birth": "19801010",
-  "date": "20270101",
+  "date": "20261110",
   "fields": {
     "health": {
-      "grade": "caution",
-      "score": 22,
-      "stars": 2,
-      "text": "조금 일찍 잠자리에 들면 괜찮아요.",
+      "grade": "normal",
+      "score": 58,
+      "stars": 3,
+      "text": "규칙적인 생활이 힘이 되는 날이에요.",
     },
     "love": {
-      "grade": "best",
-      "score": 92,
-      "stars": 5,
-      "text": "가까운 사람과 특별한 추억이 생겨요.",
+      "grade": "good",
+      "score": 83,
+      "stars": 4,
+      "text": "편하게 나눈 이야기가 마음에 남아요.",
     },
     "money": {
-      "grade": "normal",
-      "score": 49,
-      "stars": 3,
-      "text": "충동구매만 피하면 무난한 하루예요.",
+      "grade": "good",
+      "score": 69,
+      "stars": 4,
+      "text": "금전 감각이 평소보다 밝아요.",
     },
     "work": {
       "grade": "normal",
-      "score": 60,
+      "score": 62,
       "stars": 3,
-      "text": "익숙한 일부터 하면 리듬이 잡혀요.",
+      "text": "메모하는 습관이 도움이 돼요.",
     },
   },
   "lucky": {
-    "color": "라벤더",
-    "direction": "동",
-    "item": "머그컵",
-    "number": 37,
+    "color": "버건디",
+    "direction": "북동",
+    "item": "스카프",
+    "number": 11,
   },
   "total": {
-    "detail": "말이 오해로 이어지기 쉬운 날이에요. 듣는 시간을 조금 늘리면 대화가 부드러워져요. 급한 결정은 하루 미뤄도 괜찮아요.",
-    "grade": "caution",
-    "score": 33,
-    "summary": "쉬어 가도 괜찮은 하루",
+    "detail": "새로운 것을 배우기 좋은 기운이 있어요. 궁금하던 걸 찾아보면 뜻밖의 아이디어가 떠올라요. 가볍게 메모해 두면 쓸모가 있어요.",
+    "grade": "good",
+    "score": 75,
+    "summary": "꾸준함이 보답으로 돌아오는 하루",
   },
 }
 `;
@@ -180,47 +180,47 @@ exports[`스냅샷 — 이미 공유된 결과가 바뀌면 안 됨 > 20000229 /
 }
 `;
 
-exports[`스냅샷 — 이미 공유된 결과가 바뀌면 안 됨 > 20090101 / 20261231 1`] = `
+exports[`스냅샷 — 이미 공유된 결과가 바뀌면 안 됨 > 20090101 / 20261110 1`] = `
 {
   "birth": "20090101",
-  "date": "20261231",
+  "date": "20261110",
   "fields": {
     "health": {
-      "grade": "normal",
-      "score": 60,
-      "stars": 3,
-      "text": "자세를 한 번씩 바로 하면 편해져요.",
+      "grade": "good",
+      "score": 76,
+      "stars": 4,
+      "text": "좋아하는 취미가 긴장을 풀어 줘요.",
     },
     "love": {
+      "grade": "normal",
+      "score": 50,
+      "stars": 3,
+      "text": "무리하게 다가가기보다 기다려 보세요.",
+    },
+    "money": {
+      "grade": "best",
+      "score": 86,
+      "stars": 5,
+      "text": "작은 행운이 지갑을 채워 줘요.",
+    },
+    "work": {
       "grade": "good",
       "score": 68,
       "stars": 4,
-      "text": "솔직한 한마디가 마음의 거리를 좁혀요.",
-    },
-    "money": {
-      "grade": "normal",
-      "score": 54,
-      "stars": 3,
-      "text": "큰 변화 없이 안정적으로 흘러가요.",
-    },
-    "work": {
-      "grade": "best",
-      "score": 99,
-      "stars": 5,
-      "text": "집중력이 최고조, 어려운 일부터 처리해요.",
+      "text": "계획한 일을 차례대로 해낼 수 있어요.",
     },
   },
   "lucky": {
-    "color": "크림",
-    "direction": "남서",
-    "item": "손목시계",
-    "number": 60,
+    "color": "네이비",
+    "direction": "서",
+    "item": "립밤",
+    "number": 76,
   },
   "total": {
-    "detail": "눈에 띄는 변화는 적지만 준비하기 좋은 날이에요. 다음 할 일을 정리해 두면 나중에 큰 도움이 돼요. 작은 정리부터 시작해 보세요.",
+    "detail": "새로운 일을 벌이기보다 하던 일을 정리하기 좋은 하루예요. 밀린 일을 끝내면 마음이 한결 가벼워져요. 작은 것부터 시작해 보세요.",
     "grade": "normal",
-    "score": 45,
-    "summary": "무난하게 흘러가는 평온한 날",
+    "score": 62,
+    "summary": "소소하게 채워 가는 하루",
   },
 }
 `;

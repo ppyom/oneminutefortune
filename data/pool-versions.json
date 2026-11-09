@@ -30,5 +30,37 @@
       "lucky.direction": 3,
       "lucky.item": 3
     }
+  },
+  {
+    "from": "20261110",
+    "counts": {
+      "total.best.summary": 20,
+      "total.best.detail": 20,
+      "total.good.summary": 20,
+      "total.good.detail": 20,
+      "total.normal.summary": 20,
+      "total.normal.detail": 20,
+      "total.caution.summary": 20,
+      "total.caution.detail": 20,
+      "love.best": 20,
+      "love.good": 20,
+      "love.normal": 20,
+      "love.caution": 20,
+      "money.best": 20,
+      "money.good": 20,
+      "money.normal": 20,
+      "money.caution": 20,
+      "work.best": 20,
+      "work.good": 20,
+      "work.normal": 20,
+      "work.caution": 20,
+      "health.best": 20,
+      "health.good": 20,
+      "health.normal": 20,
+      "health.caution": 20,
+      "lucky.color": 20,
+      "lucky.direction": 8,
+      "lucky.item": 20
+    }
   }
 ]
