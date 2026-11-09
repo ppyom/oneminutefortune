@@ -1,0 +1,21 @@
+# 줄바꿈은 저장소·작업 폴더 모두 LF로 통일한다.
+# (Windows 편집기가 CRLF로 바꿔도 커밋 시 LF로 정규화되고, 체크아웃은 LF로 받는다)
+* text=auto eol=lf
+
+# Windows 전용 스크립트만 CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# 바이너리 (줄바꿈 변환·diff 하지 않음)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.pdf binary
