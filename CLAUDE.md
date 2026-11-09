@@ -12,6 +12,7 @@
 - 이미지 저장: OG 결과 이미지(`/api/og?id=…`)를 내려받는다 (html-to-image는 backdrop-filter를 못 그려 쓰지 않음)
 - 공유: Web Share API(`navigator.share`), 미지원 브라우저는 링크 복사(`navigator.clipboard`)로 대체
 - 분석: GA4 (`@next/third-parties`, `NEXT_PUBLIC_GA_ID` 있을 때만)
+- 광고: Google AdSense (`lib/adsense.ts`). `NEXT_PUBLIC_ADSENSE_CLIENT`가 있을 때만 스크립트·`google-adsense-account` 메타·`/ads.txt` 출력. 수동 광고는 결과 화면 한 자리(`AdSlot`, `NEXT_PUBLIC_ADSENSE_SLOT_RESULT`), 자동 광고 설정·페이지 제외는 애드센스 대시보드에서 한다. robots.txt는 `Mediapartners-Google`에 `/result`를 연다.
 - 테스트: Vitest
 
 ## 명령어

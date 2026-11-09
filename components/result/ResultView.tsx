@@ -8,9 +8,11 @@ import {
   LuckyGrid,
   TotalCard,
 } from "@/components/result/ResultSections";
+import { AdSlot } from "@/components/AdSlot";
 import { ShareActions } from "@/components/share/ShareActions";
 import { SiteFooter } from "@/components/SiteFooter";
 import { useTodayKst } from "@/components/TodayLabel";
+import { ADSENSE_SLOT_RESULT } from "@/lib/adsense";
 import { formatKoreanDate } from "@/lib/birth";
 import { getFortune } from "@/lib/fortune/getFortune";
 import { getProfile, getServerProfile, subscribeProfile } from "@/lib/storage";
@@ -105,6 +107,8 @@ export function ResultView() {
                   layout="row"
                 />
               </div>
+              {/* 광고: 모바일·태블릿은 공유 버튼 아래, 데스크톱은 오른쪽 행운 아래 */}
+              <AdSlot slot={ADSENSE_SLOT_RESULT} />
             </div>
           </div>
 

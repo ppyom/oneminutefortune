@@ -2,6 +2,8 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Gowun_Dodum } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
+import { ADSENSE_CLIENT, adsenseScriptSrc } from "@/lib/adsense";
 import { GA_ID, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -42,9 +44,13 @@ export const metadata: Metadata = {
   },
   verification: {
     google: googleVerification,
-    other: naverVerification
-      ? { "naver-site-verification": naverVerification }
-      : undefined,
+    other: {
+      ...(naverVerification && {
+        "naver-site-verification": naverVerification,
+      }),
+      // 애드센스 사이트 확인 (게시자 ID가 있을 때만)
+      ...(ADSENSE_CLIENT && { "google-adsense-account": ADSENSE_CLIENT }),
+    },
   },
 };
 
@@ -62,6 +68,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
       </body>
       {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+      {/* 애드센스: 사이트 확인 + 자동 광고 + 수동 광고 단위 공용 스크립트 */}
+      {ADSENSE_CLIENT && (
+        <Script
+          id="adsense"
+          src={adsenseScriptSrc(ADSENSE_CLIENT)}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      )}
     </html>
   );
 }

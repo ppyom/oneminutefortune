@@ -64,11 +64,33 @@ export default function PrivacyPage() {
         </p>
       </Section>
 
-      <Section title="4. 광고 쿠키 (예정)">
+      <Section title="4. 광고 (Google AdSense)">
         <p>
-          앞으로 서비스 운영을 위해 Google AdSense 같은 광고를 붙일 수 있어요.
-          광고 서비스는 관심사에 맞는 광고를 보여 주려고 쿠키를 쓸 수 있어요.
-          광고를 도입하기 전에 이 방침을 먼저 고쳐서 알려 드릴게요.
+          서비스 운영을 위해 Google AdSense 광고를 보여 줘요. Google과 광고
+          파트너는 쿠키를 사용해 이 사이트와 다른 사이트 방문 기록을 바탕으로
+          관심사에 맞는 광고를 보여 줄 수 있어요. 입력한 생년월일과 이름은
+          광고에 쓰이지 않아요.
+        </p>
+        <p>
+          맞춤 광고는{" "}
+          <a
+            href="https://adssettings.google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4"
+          >
+            Google 광고 설정
+          </a>
+          에서 끌 수 있어요. Google이 광고에서 정보를 쓰는 방식은{" "}
+          <a
+            href="https://policies.google.com/technologies/ads?hl=ko"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4"
+          >
+            Google 광고 정책
+          </a>
+          에서 볼 수 있어요.
         </p>
       </Section>
 
@@ -79,7 +101,9 @@ export default function PrivacyPage() {
         </p>
         <ul className="list-disc space-y-1 pl-5">
           <li>Vercel Inc. — 웹사이트 호스팅, 접속 기록</li>
-          <li>Google LLC — 방문 통계(Google Analytics)</li>
+          <li>
+            Google LLC — 방문 통계(Google Analytics), 광고(Google AdSense)
+          </li>
         </ul>
       </Section>
 
