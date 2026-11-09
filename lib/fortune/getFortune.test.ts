@@ -166,7 +166,8 @@ describe("pool-versions 검증", () => {
 
   it("문장이 삭제되면 거부", () => {
     const p = structuredClone(pool);
-    p.love.best.pop();
+    // 고정된 개수보다 적어지도록 자른다
+    p.love.best.length = versions.at(-1)!.counts["love.best"] - 1;
     expect(() => validateVersions(p, versions)).toThrow(/love\.best/);
   });
 
