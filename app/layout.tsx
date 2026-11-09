@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Gowun_Dodum } from "next/font/google";
 import localFont from "next/font/local";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 // 본문: SUITE 가변 폰트 (400–600 사용)
@@ -20,9 +21,34 @@ const gowun = Gowun_Dodum({
   preload: false,
 });
 
+// 검색엔진 소유 확인 — 값이 있을 때만 meta 태그 출력
+const googleVerification = process.env.GOOGLE_SITE_VERIFICATION || undefined;
+const naverVerification = process.env.NAVER_SITE_VERIFICATION || undefined;
+
 export const metadata: Metadata = {
-  title: "One Minute Fortune",
-  description: "생년월일만 넣으면 1분 만에 보는 오늘의 운세",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "ko_KR",
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    url: "/",
+  },
+  verification: {
+    google: googleVerification,
+    other: naverVerification
+      ? { "naver-site-verification": naverVerification }
+      : undefined,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#290044",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
