@@ -1,3 +1,5 @@
+import { GUIDES, guidePath } from "@/lib/guides";
+
 export const SITE_NAME = "One Minute Fortune";
 export const MENU_NAME = "오늘의 운세";
 export const SITE_DESCRIPTION =
@@ -11,4 +13,10 @@ export const SITE_URL = (
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || undefined;
 
 /** 공개 페이지 (sitemap 대상) */
-export const PUBLIC_ROUTES = ["/", "/about", "/privacy"] as const;
+export const PUBLIC_ROUTES = [
+  "/",
+  "/guide",
+  ...GUIDES.map((g) => guidePath(g.slug)),
+  "/about",
+  "/privacy",
+];
