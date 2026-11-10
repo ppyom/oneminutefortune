@@ -8,7 +8,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/privacy" },
 };
 
-const EFFECTIVE_DATE = "2026년 11월 9일";
+const EFFECTIVE_DATE = "2026년 11월 10일";
+const OPERATOR_NAME = "ppyom";
+const CONTACT_EMAIL = "ppyom2@gmail.com";
 
 export default function PrivacyPage() {
   return (
@@ -119,7 +121,26 @@ export default function PrivacyPage() {
         </ul>
       </Section>
 
-      <Section title="7. 방침 변경">
+      <Section title="7. 개인정보 보호책임자·문의">
+        <p>
+          개인정보와 관련한 문의나 요청은 아래로 연락해 주세요. 확인하는 대로
+          답변해 드려요.
+        </p>
+        <ul className="list-disc space-y-1 pl-5">
+          <li>운영자: {OPERATOR_NAME}</li>
+          <li>
+            이메일:{" "}
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="underline underline-offset-4"
+            >
+              {CONTACT_EMAIL}
+            </a>
+          </li>
+        </ul>
+      </Section>
+
+      <Section title="8. 방침 변경">
         <p>
           이 방침이 바뀌면 이 페이지에서 알려 드려요. 시행일: {EFFECTIVE_DATE}
         </p>
