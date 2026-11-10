@@ -24,6 +24,10 @@ export function SiteFooter({
           <span aria-hidden>·</span>
         </>
       )}
+      <Link href="/guide" className={linkClass}>
+        운세 가이드
+      </Link>
+      <span aria-hidden>·</span>
       <Link href="/about" className={linkClass}>
         서비스 소개
       </Link>
