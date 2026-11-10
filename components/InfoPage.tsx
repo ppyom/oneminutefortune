@@ -1,16 +1,19 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_NAME } from "@/lib/site";
 
-/** 소개·방침 같은 텍스트 페이지 공통 틀 */
+/** 소개·방침·가이드 같은 텍스트 페이지 공통 틀. after는 글래스 카드 아래에 붙는다. */
 export function InfoPage({
   title,
   lead,
   children,
+  after,
 }: {
   title: string;
   lead?: string;
   children: ReactNode;
+  after?: ReactNode;
 }) {
   return (
     <div className="relative isolate flex flex-1 flex-col overflow-hidden">
@@ -55,11 +58,10 @@ export function InfoPage({
             {children}
           </div>
         </div>
+        {after}
       </main>
 
-      <footer className="px-4 pb-8 text-center text-sm text-cream/70">
-        재미로 보는 운세예요.
-      </footer>
+      <SiteFooter className="px-4 pb-6" />
     </div>
   );
 }
