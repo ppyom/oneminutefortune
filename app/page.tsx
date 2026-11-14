@@ -27,8 +27,8 @@ export default function Home() {
 
         <main className="flex flex-1 flex-col tablet:items-center desktop:mx-auto desktop:w-full desktop:max-w-300 desktop:flex-row desktop:gap-24">
           <section className="mt-16 flex flex-col gap-3.5 tablet:mt-75 tablet:items-center tablet:gap-4 tablet:text-center desktop:mt-0 desktop:min-w-0 desktop:flex-1 desktop:items-start desktop:gap-5.5 desktop:text-left">
-            <p className="text-sm font-medium tracking-[0.08em] text-cream/80 tablet:text-[15px] tablet:tracking-[0.1em] tablet:text-cream/85 desktop:text-base desktop:tracking-[0.12em]">
-              TODAY’S FORTUNE
+            <p className="text-sm font-medium tracking-[0.02em] text-cream/80 tablet:text-[15px] tablet:text-cream/85 desktop:text-base">
+              오늘의 운세
             </p>
             <h1 className="font-display text-[34px] leading-[1.32] tracking-[-0.03em] break-keep tablet:text-5xl tablet:leading-[1.3] desktop:text-[clamp(48px,4.45vw,64px)] desktop:leading-[1.25]">
               오늘, 당신의 별은

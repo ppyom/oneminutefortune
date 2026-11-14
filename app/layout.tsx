@@ -4,7 +4,14 @@ import { Gowun_Dodum } from "next/font/google";
 import localFont from "next/font/local";
 import Script from "next/script";
 import { ADSENSE_CLIENT, adsenseScriptSrc } from "@/lib/adsense";
-import { GA_ID, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  GA_ID,
+  HOME_TITLE,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 import "./globals.css";
 
 // 본문: SUITE 가변 폰트 (400–600 사용)
@@ -30,15 +37,16 @@ const naverVerification = process.env.NAVER_SITE_VERIFICATION || undefined;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: SITE_NAME, template: `%s | ${SITE_NAME}` },
+  title: { default: HOME_TITLE, template: `%s | ${SITE_NAME}` },
   description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
   applicationName: SITE_NAME,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "ko_KR",
     siteName: SITE_NAME,
-    title: SITE_NAME,
+    title: HOME_TITLE,
     description: SITE_DESCRIPTION,
     url: "/",
   },
