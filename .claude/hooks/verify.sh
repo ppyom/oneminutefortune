@@ -9,6 +9,26 @@ fi
 
 cd "${CLAUDE_PROJECT_DIR:-$(dirname "$0")/../..}" || exit 0
 
+# 질문·이슈 작성처럼 코드를 안 건드린 턴에서는 돌리지 않는다.
+# 커밋 안 된 코드 변경이 없거나, 마지막 통과 때와 변경 내용이 같으면 건너뛴다.
+# 문서·Claude 설정은 lint/test 결과에 영향이 없어 제외한다.
+paths=(. ':!*.md' ':!.claude' ':!.github')
+changes=$(git status --porcelain -- "${paths[@]}" 2>/dev/null)
+if [ -z "$changes" ]; then
+  exit 0
+fi
+stamp="$(git rev-parse --git-dir)/claude-verify.stamp"
+fingerprint=$(
+  {
+    git rev-parse HEAD
+    git diff HEAD -- "${paths[@]}"
+    git ls-files --others --exclude-standard -z -- "${paths[@]}" | xargs -0 -r sha1sum
+  } | sha1sum | cut -d' ' -f1
+)
+if [ -f "$stamp" ] && [ "$(cat "$stamp")" = "$fingerprint" ]; then
+  exit 0
+fi
+
 fail=""
 if ! lint_out=$(npm run --silent lint 2>&1); then
   fail+=$'\n[npm run lint 실패]\n'"$(printf '%s' "$lint_out" | tail -30)"
@@ -22,4 +42,5 @@ if [ -n "$fail" ]; then
   exit 2
 fi
 
+printf '%s' "$fingerprint" > "$stamp"
 echo '{"systemMessage": "lint · test 통과"}'
