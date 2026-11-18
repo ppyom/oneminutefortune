@@ -23,6 +23,7 @@ import { SITE_NAME } from "@/lib/site";
  * 공유 랜딩 /s/{생년월일}-{날짜}[?n=이름]
  * — design/Share(390) · TabletShare(834) · DesktopShare(1440)
  * 링크에 날짜가 있어 지난 링크도 그날의 결과를 보여 준다. 미래 날짜는 404.
+ * 404 상태 코드는 proxy.ts가 렌더링 전에 낸다 (PPR 셸이 200으로 먼저 나가기 때문).
  */
 
 type Props = PageProps<"/s/[id]">;
@@ -41,7 +42,7 @@ const shortDate = (ymd: string) =>
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const data = await resolve(props);
-  // 메타데이터 단계에서 걸러야 본문 스트리밍 전에 404 상태 코드가 나간다
+  // proxy.ts에서 이미 걸러지지만, 그 사이 자정이 지나는 경우를 대비한 방어
   if (!data) notFound();
   const { birth, date, name, fortune } = data;
   const title = name
