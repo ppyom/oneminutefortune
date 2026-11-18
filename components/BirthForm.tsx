@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useId, useRef, useState, useSyncExternalStore } from "react";
 import { useTodayKst } from "@/components/TodayLabel";
+import { track } from "@/lib/analytics";
 import {
   BIRTH_ERROR_MESSAGE,
   formatBirthDigits,
@@ -55,6 +56,7 @@ export function BirthForm() {
     }
     const cleanName = normalizeName(name);
     saveProfile({ birth: result.birth, name: cleanName || undefined });
+    track("fortune_submit");
     router.push("/result");
   }
 
