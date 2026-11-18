@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ImageSaveDialog } from "@/components/share/ImageSaveDialog";
+import { track } from "@/lib/analytics";
 import type { Ymd } from "@/lib/fortune/types";
 import { detectInAppBrowser, type InAppBrowser } from "@/lib/inApp";
 import { ogResultPath, senderLabel, sharePath } from "@/lib/share";
@@ -68,8 +69,10 @@ export function ShareActions({
   const url = () => new URL(sharePath(birth, date, name), location.origin).href;
 
   async function copyLink() {
+    const ok = await copyText(url());
+    if (ok) track("share", { method: "copy_link" });
     notify(
-      (await copyText(url()))
+      ok
         ? "링크를 복사했어요"
         : "복사하지 못했어요. 주소창의 링크를 이용해 주세요",
     );
@@ -84,6 +87,7 @@ export function ShareActions({
     if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
       try {
         await navigator.share(data);
+        track("share", { method: "web_share" });
       } catch (e) {
         // 사용자가 공유 창을 닫은 경우는 조용히 넘어간다
         if ((e as Error).name !== "AbortError") await copyLink();
@@ -100,6 +104,7 @@ export function ShareActions({
         url: new URL(ogResultPath(birth, date, name), location.origin).href,
         inApp,
       });
+      track("save_image", { method: "in_app_preview" });
       return;
     }
     setSaving(true);
@@ -114,6 +119,7 @@ export function ShareActions({
       a.click();
       a.remove();
       setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      track("save_image", { method: "download" });
       notify("이미지를 저장했어요");
     } catch {
       notify("이미지를 저장하지 못했어요. 잠시 후 다시 시도해 주세요");
