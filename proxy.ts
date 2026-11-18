@@ -9,8 +9,12 @@ import { parseShareTarget } from "@/lib/share";
 export function proxy(request: NextRequest) {
   const id = request.nextUrl.pathname.slice("/s/".length);
   if (parseShareTarget(id, todayKst())) return NextResponse.next();
-  return NextResponse.rewrite(new URL("/_not-found", request.url));
+  // /_not-found로 rewrite하면 Vercel은 정적 페이지로 보고 200을 낸다.
+  // 어떤 라우트에도 없는 경로로 보내야 not-found 화면이 404로 나간다.
+  return NextResponse.rewrite(new URL(INVALID_SHARE_PATH, request.url));
 }
+
+const INVALID_SHARE_PATH = "/__invalid-share";
 
 export const config = {
   matcher: "/s/:id",
