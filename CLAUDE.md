@@ -37,6 +37,7 @@ app/
   about/page.tsx        # 서비스 소개
   privacy/page.tsx      # 개인정보처리방침
   sitemap.ts, robots.ts, manifest.ts
+proxy.ts                # /s/[id] 사전 검증 → 잘못된 링크 404
 lib/site.ts             # 사이트 URL·이름 상수 (env: .env.example 참고)
 lib/fortune/
   seed.ts               # 해시(cyrb53), PRNG(mulberry32)
@@ -128,7 +129,7 @@ box-shadow: inset 0 1px 0 rgba(238, 227, 176, 0.28), 0 12px 40px rgba(20, 0, 34,
 ## OG 이미지
 
 - A. 공통: 날짜 없음, 메인 링크용
-- B. 결과 포함: `/s/[생년월일-날짜]?n=이름`(이름은 입력한 경우만) 공유 링크용. 미래 날짜는 404. URL에 날짜가 꼭 있어야 카톡 캐시를 피할 수 있다.
+- B. 결과 포함: `/s/[생년월일-날짜]?n=이름`(이름은 입력한 경우만) 공유 링크용. 미래 날짜·잘못된 id는 404 (`proxy.ts`가 렌더링 전에 검증. PPR 셸이 200으로 먼저 나가 페이지 안 `notFound()`로는 상태 코드가 안 바뀐다). URL에 날짜가 꼭 있어야 카톡 캐시를 피할 수 있다.
 - Satori는 `backdrop-filter` 미지원. 글래스는 미리 블러 처리한 배경 PNG로 흉내 낸다 (`scripts/gen-og-backgrounds.mjs` → `assets/og/`, 폰트는 `assets/fonts/` 정적 TTF).
 - `/s/`와 `/api/og`는 robots.txt로 막지 않는다 (미리보기 봇이 읽어야 함). 색인은 noindex로 막는다. 카카오 등 봇 목록은 `next.config.ts`의 `htmlLimitedBots`.
 - 1200×630.
