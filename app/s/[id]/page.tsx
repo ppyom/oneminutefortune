@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { Suspense } from "react";
+import { LandingCtaLink } from "@/components/share/LandingCtaLink";
 import { ShareBackdrop } from "@/components/share/ShareBackdrop";
 import { SiteFooter } from "@/components/SiteFooter";
 import { formatKoreanDate } from "@/lib/birth";
@@ -134,12 +135,9 @@ async function ShareContent(props: Props) {
 function Cta() {
   return (
     <div className="flex flex-col gap-3 tablet:gap-3.5 desktop:gap-3">
-      <Link
-        href="/"
-        className="flex h-14 items-center justify-center rounded-2xl bg-cream text-[17px] font-semibold text-night transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-night focus-visible:outline-none active:opacity-80 tablet:h-15 tablet:rounded-[18px] tablet:text-lg"
-      >
+      <LandingCtaLink className="flex h-14 items-center justify-center rounded-2xl bg-cream text-[17px] font-semibold text-night transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-cream/50 focus-visible:ring-offset-2 focus-visible:ring-offset-night focus-visible:outline-none active:opacity-80 tablet:h-15 tablet:rounded-[18px] tablet:text-lg">
         나도 오늘 운세 보기
-      </Link>
+      </LandingCtaLink>
       <p className="text-center text-xs text-cream/70 tablet:text-[13px] tablet:text-cream/72">
         로그인 없이 생년월일만 있으면 돼요
       </p>
